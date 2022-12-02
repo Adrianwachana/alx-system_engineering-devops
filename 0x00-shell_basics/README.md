@@ -1,1 +1,1 @@
-lamafile
+/bin/ls
