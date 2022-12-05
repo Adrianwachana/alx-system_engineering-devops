@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-
-=======
-Where am I
->>>>>>> 38db46f998cb2206156347267d31e970b3334e27
+Shell redirection
