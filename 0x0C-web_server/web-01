@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# The above line is a shebang that instructs the system to use the Bash shell to interpret this script.
+
+# This is a comment that provides a description of the script's purpose.
+# It may be related to the login process for a server named "server-01."
+
+# Start the SSH agent to manage SSH keys for this session.
+eval "$(ssh-agent)"
+
+# Add the private key file (~/.ssh/school) to the SSH agent's keyring.
+# This allows the user to authenticate with SSH without entering the passphrase each time.
+ssh-add ~/.ssh/school
+
+# Initiate an SSH connection to the server with the specified IP address (100.25.0.162).
+# The connection will use the private key added to the SSH agent in the previous step.
+# The username "ubuntu" will be used for the remote server login.
+ssh ubuntu@100.25.0.162
+
