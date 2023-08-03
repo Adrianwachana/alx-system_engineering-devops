@@ -7,17 +7,20 @@ package { 'nginx':
 
 # Define a custom fact to retrieve the server's hostname
 Facter.add('server_hostname') do
-  setcode 'hostname'
+  setcode do
+    require 'socket'
+    Socket.gethostname
+  end
 end
 
 # Configure Nginx with custom HTTP header
 file { '/etc/nginx/sites-available/default':
   ensure  => file,
-  content => "# custom HTTP RESPONSE HEADER\n
+  content => "# Custom HTTP RESPONSE HEADER\n
               server {\n
                 listen 80 default_server;\n
                 server_name _;\n
-                add_header X-Served-By $server_hostname;\n
+                add_header X-Served-By $::server_hostname;\n
                 # ... other Nginx configuration ...\n
               }",
   require => Package['nginx'],
